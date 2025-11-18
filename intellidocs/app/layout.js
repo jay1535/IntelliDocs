@@ -5,7 +5,7 @@ import Provider from "./provider";
 
 
 export const metadata = {
-  title: "IntelliDocs",
+  title: "IntelliDOCs",
   description: "AI-powered document analysis and insights",
 };
 

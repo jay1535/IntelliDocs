@@ -12,9 +12,9 @@ export default function Home() {
         variant="outline"
         size="icon"
         onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-        className="transition-colors duration-200 hover:bg-accent "
+        className="transition-colors border rounded-3xl duration-200 hover:bg-accent cursor-pointer"
       >
-        {theme === "light" ? <Sun /> : <Moon />}
+        {theme === "light" ? <Sun className="text-red-800" /> : <Moon className="text-purple-400" />}
       </Button>
 
 
