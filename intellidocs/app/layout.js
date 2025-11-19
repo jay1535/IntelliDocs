@@ -1,6 +1,8 @@
 import {Exo_2 } from "next/font/google";
 import "./globals.css";
 import Provider from "./provider";
+import { ClerkProvider } from "@clerk/nextjs";
+import {shadcn} from "@clerk/themes";
 
 
 
@@ -17,6 +19,10 @@ const Exo_2Font = Exo_2({
 
 export default function RootLayout({ children }) {
   return (
+    <ClerkProvider
+     appearence={{
+      baseTheme: shadcn
+     }}>
     <html lang="en" suppressHydrationWarning>
       <body
         className={Exo_2Font.className}
@@ -26,5 +32,6 @@ export default function RootLayout({ children }) {
         </Provider>
       </body>
     </html>
+    </ClerkProvider>
   );
 }
