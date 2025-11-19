@@ -7,9 +7,8 @@ import {
   SidebarGroup,
   SidebarHeader,
 } from "@/components/ui/sidebar";
-import { SignInButton } from "@clerk/clerk-react";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
+import { SignedIn, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 
 export function AppSidebar() {
@@ -52,55 +51,32 @@ export function AppSidebar() {
         <SidebarGroup />
       </SidebarContent>
 
-     <SidebarFooter>
-      {/* Signed OUT */}
-      <SignedOut>
-        <div
-          className="
-            flex items-center justify-center bg-primary p-1.5 border rounded-lg text-white
-            transition-all duration-300
-            group-data-[collapsible=icon]:opacity-0
-            group-data-[collapsible=icon]:w-0
-            group-data-[collapsible=icon]:overflow-hidden
-            group-data-[collapsible=icon]:pointer-events-none
-          "
-        >
-          <SignInButton mode="modal">
-            <button className="w-full text-center">Sign In</button>
-          </SignInButton>
-        </div>
-      </SignedOut>
-
-      {/* Signed IN */}
-      <SignedIn>
-        <div
-          className="
-            flex items-center 
-            transition-all duration-300
-
-            /* Hide full user button when collapsed */
-            group-data-[collapsible=icon]:opacity-100   /* Keep icon visible */
-            group-data-[collapsible=icon]:w-8
-            group-data-[collapsible=icon]:h-8
-            group-data-[collapsible=icon]:p-0
-          "
-        >
-          {/* User Button (Clerk component) */}
-          <UserButton
-            appearance={{
-              elements: {
-                userButtonAvatarBox: "w-8 h-8",    // maintain icon size
-                userButtonOuterIdentifier: `
-                  transition-all duration-300
-                  group-data-[collapsible=icon]:hidden
-                `,
-              },
-            }}
-          />
-        </div>
-      </SignedIn>
-    </SidebarFooter>
-
+      {/* Sidebar Footer - ONLY show if signed in */}
+      <SidebarFooter>
+        <SignedIn>
+          <div
+            className="
+              flex items-center p-1
+              transition-all duration-300
+              group-data-[collapsible=icon]:w-8
+              group-data-[collapsible=icon]:h-8
+              group-data-[collapsible=icon]:p-0
+            "
+          >
+            <UserButton
+              appearance={{
+                elements: {
+                  userButtonAvatarBox: "w-8 h-8",
+                  userButtonOuterIdentifier: `
+                    transition-all duration-300
+                    group-data-[collapsible=icon]:hidden
+                  `,
+                },
+              }}
+            />
+          </div>
+        </SignedIn>
+      </SidebarFooter>
     </Sidebar>
   );
 }
