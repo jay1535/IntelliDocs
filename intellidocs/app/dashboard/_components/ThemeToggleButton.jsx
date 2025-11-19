@@ -22,9 +22,9 @@ export function ThemeToggleButton() {
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       className="
         p-1.5                      /* smaller padding */
-        w-8 h-8                    /* overall small button */
+        w-10 h-9.5                   /* overall small button */
         flex items-center justify-center
-        rounded-full                 /* compact round shape */
+        rounded-2xl                 /* compact round shape */
         border
         transition-colors duration-200
         hover:bg-accent
@@ -34,7 +34,7 @@ export function ThemeToggleButton() {
       {theme === "light" ? (
         <Sun className="w-4 h-4 text-red-600" />      /* smaller icon */
       ) : (
-        <Moon className="w-4 h-4 text-purple-400" />
+        <Moon className="w-4 h-4 text-purple-600" />
       )}
     </button>
   );

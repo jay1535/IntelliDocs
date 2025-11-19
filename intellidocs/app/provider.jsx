@@ -19,18 +19,6 @@ function Provider({ children, ...props }) {
     >
       <SidebarProvider>
       <div className="w-full">
-
-          {/* Sidebar trigger also only when logged in
-          <SignedIn>
-            <SidebarTrigger className="rounded-md mx-2 my-2" />
-          </SignedIn> */}
-
-          {/* When signed out, center everything (optional) */}
-          <SignedOut>
-            <div className="p-4"></div>
-          </SignedOut>
-
-          {/* Convex Provider */}
           <ConvexProvider client={convex}>
             {children}
           </ConvexProvider>

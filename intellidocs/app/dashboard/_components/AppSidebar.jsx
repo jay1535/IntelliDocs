@@ -68,26 +68,32 @@ export function AppSidebar() {
       <SidebarFooter>
         <SignedIn>
           <div
-            className="
-              flex items-center p-1
-              transition-all duration-300
-              group-data-[collapsible=icon]:w-8
-              group-data-[collapsible=icon]:h-8
-              group-data-[collapsible=icon]:p-0
-            "
-          >
-            <UserButton
-              appearance={{
-                elements: {
-                  userButtonAvatarBox: "w-8 h-8",
-                  userButtonOuterIdentifier: `
-                    transition-all duration-300
-                    group-data-[collapsible=icon]:hidden
-                  `,
-                },
-              }}
-            />
-          </div>
+  className="
+    flex items-center 
+    transition-all duration-300
+    
+    /* size when sidebar is expanded */
+    w-14 h-14 p-1
+    
+    /* size when sidebar is collapsed */
+    group-data-[collapsible=icon]:w-10
+    group-data-[collapsible=icon]:h-10
+    group-data-[collapsible=icon]:p-0
+  "
+>
+  <UserButton
+    appearance={{
+      elements: {
+        userButtonAvatarBox: "w-12 h-12", // BIGGER avatar
+        userButtonOuterIdentifier: `
+          transition-all duration-300
+          group-data-[collapsible=icon]:hidden
+        `,
+      },
+    }}
+  />
+</div>
+
         </SignedIn>
       </SidebarFooter>
 
