@@ -1,45 +1,29 @@
 "use client";
-
-import { Button } from "@/components/ui/button";
-import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { api } from "@/convex/_generated/api";
+import { useUser } from "@clerk/clerk-react";
+import { useMutation } from "convex/react";
+import { useEffect } from "react";
 
 export default function Home() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const {user} = useUser();
+  const createUser = useMutation(api.user.createUser);
 
-  // Prevent hydration mismatch
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(()=>{
+    user && checkUser();
+  },[user])
 
-  if (!mounted) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="w-10 h-10" /> {/* placeholder */}
-      </div>
-    );
+  const checkUser= async ()=>{
+    const result = await createUser({
+      email: user?.primaryEmailAddress?.emailAddress,
+      imageUrl : user?.imageUrl,
+      userName : user?.fullName
+    });
+    console.log(result);
+
   }
-
   return (
-    <div className="flex items-center gap-2 justify-center min-h-screen py-2 my-2">
-      <Button
-        variant="outline"
-        size="icon"
-        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-        className="transition-colors border rounded-3xl duration-200 hover:bg-accent cursor-pointer"
-      >
-        {theme === "light" ? (
-          <Sun className="text-red-800" />
-        ) : (
-          <Moon className="text-purple-400" />
-        )}
-      </Button>
+    <>
 
-      <Button>
-        Upgrade To Unlock
-      </Button>
-    </div>
+    </>
   );
 }

@@ -18,18 +18,19 @@ export function AppSidebar() {
         <div className="p-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4 group">
-              <Image
-                src="/logo.svg"
-                alt="Logo"
-                width={30}
-                height={30}
-                className="rounded-md transition-transform duration-500 group-hover:scale-110"
-              />
+             <Image
+  src="/logo.svg"
+  alt="Logo"
+  width={30}
+  height={30}
+  className="rounded-md transition-transform duration-700 group-hover:scale-110 animate-pulse-fast"
+ />
+
 
               <h1
                 className="
                   font-bold text-2xl
-                  transition-all duration-900
+                  transition-all duration-1000
                   group-data-[collapsible=icon]:opacity-0
                   group-data-[collapsible=icon]:-translate-x-2.5
                   group-data-[collapsible=icon]:w-0
