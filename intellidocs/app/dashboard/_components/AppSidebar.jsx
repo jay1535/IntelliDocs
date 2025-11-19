@@ -6,27 +6,38 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarHeader,
+  useSidebar, // ⬅ add this
 } from "@/components/ui/sidebar";
 
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 
 export function AppSidebar() {
+  const { toggleSidebar } = useSidebar(); // ⬅ access sidebar controller
+
   return (
     <Sidebar collapsible="icon" className="group">
       <SidebarHeader>
         <div className="p-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4 group">
-             <Image
-  src="/logo.svg"
-  alt="Logo"
-  width={30}
-  height={30}
-  className="rounded-md transition-transform duration-700 group-hover:scale-110 animate-pulse-fast"
- />
+              
+              {/* LOGO — click to toggle sidebar */}
+              <Image
+                src="/logo.svg"
+                alt="Logo"
+                width={30}
+                height={30}
+                onClick={toggleSidebar}                 
+                className="
+                  rounded-md cursor-pointer
+                  transition-transform duration-700
+                  group-hover:scale-110
+                  animate-pulse-fast
+                "
+              />
 
-
+              {/* Title */}
               <h1
                 className="
                   font-bold text-2xl
@@ -42,6 +53,7 @@ export function AppSidebar() {
               >
                 Intelli<p className="text-orange-600">Docs</p>
               </h1>
+
             </div>
           </div>
         </div>
@@ -52,7 +64,7 @@ export function AppSidebar() {
         <SidebarGroup />
       </SidebarContent>
 
-      {/* Sidebar Footer - ONLY show if signed in */}
+      {/* Footer only when logged in */}
       <SidebarFooter>
         <SignedIn>
           <div
@@ -78,6 +90,7 @@ export function AppSidebar() {
           </div>
         </SignedIn>
       </SidebarFooter>
+
     </Sidebar>
   );
 }

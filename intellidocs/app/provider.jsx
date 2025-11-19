@@ -18,18 +18,12 @@ function Provider({ children, ...props }) {
       {...props}
     >
       <SidebarProvider>
-        
-        
-        <SignedIn>
-          <AppSidebar />
-        </SignedIn>
+      <div className="w-full">
 
-        <div className="w-full">
-
-          {/* Sidebar trigger also only when logged in */}
+          {/* Sidebar trigger also only when logged in
           <SignedIn>
             <SidebarTrigger className="rounded-md mx-2 my-2" />
-          </SignedIn>
+          </SignedIn> */}
 
           {/* When signed out, center everything (optional) */}
           <SignedOut>
