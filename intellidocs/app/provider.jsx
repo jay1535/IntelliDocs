@@ -2,9 +2,9 @@
 import React from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "./_components/AppSidebar";
 import { ConvexProvider, ConvexReactClient } from "convex/react";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { AppSidebar } from "./dashboard/_components/AppSidebar";
 
 function Provider({ children, ...props }) {
   const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL);
