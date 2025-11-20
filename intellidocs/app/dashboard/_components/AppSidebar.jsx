@@ -184,15 +184,12 @@ export function AppSidebar() {
     group-data-[collapsible=icon]:m-0
   "
 >
-  <h1 className="text-2xl font-bold flex items-center justify-center mb-4">
-    Free Plan
+ <h1 className=" font-bold mb-4 flex items-center justify-center">
+    3/5 PDF Uploaded
   </h1>
- 
-  <p className="text-gray-500 font-bold mb-2 flex items-center justify-center">
-    3/5 PDFs Uploaded
-  </p>
- 
   <Progress value={80} />
+  
+  <p className="text-sm text-gray-500 flex mt-2 items-center justify-center">Upgrade to upload more PDF</p>
  </div>
 
 
