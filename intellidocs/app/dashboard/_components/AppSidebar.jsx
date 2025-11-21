@@ -14,6 +14,7 @@ import {
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import { GalleryVerticalEnd, ShieldCheck, Upload } from "lucide-react";
 import Image from "next/image";
+import UploadPdfDialog from "./UploadPdfDialog";
 
 export function AppSidebar() {
   const { toggleSidebar } = useSidebar(); // ⬅ access sidebar controller
@@ -64,7 +65,9 @@ export function AppSidebar() {
         <SidebarGroup>
           {/* Upload PDF Button */}
           <div>
-            <Button
+            
+            <UploadPdfDialog>
+              <Button
               className="
     w-full flex items-center gap-2
     transition-all duration-300
@@ -90,6 +93,7 @@ export function AppSidebar() {
                 Upload PDF
               </span>
             </Button>
+            </UploadPdfDialog>
           </div>
 
           {/* WorkSpace */}
