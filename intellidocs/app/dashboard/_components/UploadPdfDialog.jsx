@@ -12,16 +12,29 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Upload, FileText, XCircle } from "lucide-react";
+import { Upload, FileText, XCircle, LoaderCircleIcon } from "lucide-react";
+import { useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 export default function UploadPdfDialog({ children }) {
   const [file, setFile] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [fileName, setFileName] = useState("");
+
+  
+  const shortenFileName = (name) => {
+    if (!name) return "";
+    if (name.length <= 20) return name;
+
+    const ext = name.split(".").pop();
+    const base = name.slice(0, 20);
+
+    return `${base}...${ext}`;
+  };
 
   const handleFileChange = (e) => {
     const selected = e.target.files?.[0];
     if (!selected) return;
-
     setFile(selected);
     setFileName(selected.name.replace(".pdf", ""));
   };
@@ -29,6 +42,23 @@ export default function UploadPdfDialog({ children }) {
   const removeFile = () => {
     setFile(null);
     setFileName("");
+  };
+
+  const generateUploadUrl = useMutation(api.fileStorage.generateUploadUrl);
+
+  const onUpload = async () => {
+    setLoading(true);
+    const postUrl = await generateUploadUrl();
+
+    const result = await fetch(postUrl, {
+      method: "POST",
+      headers: { "Content-Type": file.type },
+      body: file,
+    });
+    const { storageId } = await result.json();
+
+    console.log(storageId);
+    setLoading(false);
   };
 
   return (
@@ -100,10 +130,12 @@ export default function UploadPdfDialog({ children }) {
               >
                 <div className="flex items-center gap-3">
                   <FileText className="w-6 h-6 text-blue-600 dark:text-purple-400" />
+
                   <div>
                     <p className="font-medium text-gray-800 dark:text-gray-200">
-                      {file.name}
+                      {shortenFileName(file.name)}
                     </p>
+
                     <p className="text-xs text-gray-500 dark:text-gray-400">
                       {(file.size / 1024 / 1024).toFixed(2)} MB
                     </p>
@@ -122,6 +154,7 @@ export default function UploadPdfDialog({ children }) {
             <label className="block mb-2 text-sm text-gray-600 dark:text-gray-400">
               File Name
             </label>
+
             <Input
               placeholder="Enter file name"
               value={fileName}
@@ -140,8 +173,12 @@ export default function UploadPdfDialog({ children }) {
             <Button variant="outline">Cancel</Button>
           </DialogClose>
 
-          <Button type="submit" disabled={!file}>
-            Upload
+          <Button type="submit" disabled={!file} onClick={onUpload}>
+            {loading ? (
+              <LoaderCircleIcon className="animate-spin" />
+            ) : (
+              "Upload"
+            )}
           </Button>
         </DialogFooter>
       </DialogContent>
