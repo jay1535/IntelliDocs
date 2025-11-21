@@ -15,11 +15,17 @@ import { Button } from "@/components/ui/button";
 import { Upload, FileText, XCircle, LoaderCircleIcon } from "lucide-react";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import uuid4 from "uuid4";
+import { useUser } from "@clerk/clerk-react";
 
 export default function UploadPdfDialog({ children }) {
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [fileName, setFileName] = useState("");
+  const generateUploadUrl = useMutation(api.fileStorage.generateUploadUrl);
+  const addFileEntry = useMutation(api.fileStorage.addFileEntryToDb);
+  const {user} = useUser();
+  
 
   
   const shortenFileName = (name) => {
@@ -44,7 +50,7 @@ export default function UploadPdfDialog({ children }) {
     setFileName("");
   };
 
-  const generateUploadUrl = useMutation(api.fileStorage.generateUploadUrl);
+ 
 
   const onUpload = async () => {
     setLoading(true);
@@ -57,7 +63,16 @@ export default function UploadPdfDialog({ children }) {
     });
     const { storageId } = await result.json();
 
-    console.log(storageId);
+    const fileId = uuid4();
+    const resp = await addFileEntry({
+        fileId : fileId,
+        storageId : storageId,
+        fileName : fileName??'Untitled File',
+        createdBy : user?.primaryEmailAddress?.emailAddress
+    })
+    console.log(resp);
+    
+
     setLoading(false);
   };
 
