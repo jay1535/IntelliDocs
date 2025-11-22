@@ -170,17 +170,12 @@ export function AppSidebar() {
         {/* ProgressBar */}
       <div
   className="
-    p-4 border-3 bg-gray-100 dark:bg-gray-950 rounded-lg
-    hover:bg-slate-300
-    dark:hover:bg-black
-   
+    p-4 border-3 bg-gray-100 dark:bg-zinc-950 rounded-lg
+    hover:bg-slate-300 dark:hover:bg-black
     transition-all duration-1200
 
-   
     group-data-[collapsible=icon]:duration-0
     group-data-[collapsible=icon]:transition-none
-
-    
     group-data-[collapsible=icon]:opacity-0
     group-data-[collapsible=icon]:h-0
     group-data-[collapsible=icon]:overflow-hidden
@@ -188,13 +183,26 @@ export function AppSidebar() {
     group-data-[collapsible=icon]:m-0
   "
 >
- <h1 className=" font-bold mb-4 flex items-center justify-center">
+  <h1 className="font-bold mb-4 flex items-center justify-center">
     3/5 PDF Uploaded
   </h1>
-  <Progress value={80} />
-  
-  <p className="text-sm text-gray-500 flex mt-2 items-center justify-center">Upgrade to upload more PDF</p>
- </div>
+
+  <Progress
+    value={80}
+    className="
+      bg-black/20        /* Track on light mode */
+      dark:bg-white/20   /* Track on dark mode */
+      
+      [&>div]:bg-black        /* Fill on light mode */
+      dark:[&>div]:bg-white   /* Fill on dark mode */
+    "
+  />
+
+  <p className="text-sm text-gray-500 flex mt-2 items-center justify-center">
+    Upgrade to upload more PDF
+  </p>
+</div>
+
 
 
 
