@@ -25,6 +25,7 @@ export default function UploadPdfDialog({ children }) {
   const generateUploadUrl = useMutation(api.fileStorage.generateUploadUrl);
   const addFileEntry = useMutation(api.fileStorage.addFileEntryToDb);
   const {user} = useUser();
+  const getFileUrl = useMutation(api.fileStorage.getFileUrl);
   
 
   
@@ -64,10 +65,14 @@ export default function UploadPdfDialog({ children }) {
     const { storageId } = await result.json();
 
     const fileId = uuid4();
+
+    const fileUrl = await getFileUrl({storageId});
+
     const resp = await addFileEntry({
         fileId : fileId,
         storageId : storageId,
         fileName : fileName??'Untitled File',
+        fileUrl : fileUrl,
         createdBy : user?.primaryEmailAddress?.emailAddress
     })
     console.log(resp);
