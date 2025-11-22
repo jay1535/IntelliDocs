@@ -144,7 +144,7 @@ export function AppSidebar() {
           {/* Upgrade */}
           <div  
             className="
-              flex items-center justify-center gap-2 p-2 mt-5 cursor-pointer 
+              flex  items-center justify-center gap-2 p-2 mt-5 cursor-pointer 
               hover:bg-slate-200 dark:hover:bg-slate-800
               rounded-lg transition-all duration-300
 

@@ -55,7 +55,7 @@ function AppHeader() {
             alt="Logo"
             width={30}
             height={30}
-            className="rounded-md cursor-pointer transition-transform duration-700 group-hover:scale-110 animate-pulse-fast"
+            className="rounded-md  cursor-pointer transition-transform duration-700 group-hover:scale-110 animate-pulse-fast"
           />
 
           {/* Title (HIDDEN on Mobile) */}
