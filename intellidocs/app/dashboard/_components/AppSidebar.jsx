@@ -54,7 +54,7 @@ export function AppSidebar() {
                   whitespace-nowrap
                   flex
 
-                  max-sm:!opacity-100 max-sm:!w-auto max-sm:!overflow-visible
+                  max-sm:opacity-100 max-sm:w-auto max-sm:overflow-visible
                 "
               >
                 Intelli<p className="text-orange-600">Docs</p>
@@ -93,7 +93,7 @@ export function AppSidebar() {
                     group-data-[collapsible=icon]:p-0
                     whitespace-nowrap
 
-                    max-sm:!opacity-100 max-sm:!w-auto max-sm:!overflow-visible
+                    max-sm:opacity-100 max-sm:w-auto max-sm:overflow-visible
                   "
                 >
                   Upload PDF
@@ -134,7 +134,7 @@ export function AppSidebar() {
                 group-data-[collapsible=icon]:scale-90
                 group-data-[collapsible=icon]:m-0
 
-                max-sm:!opacity-100 max-sm:!w-auto max-sm:!overflow-visible
+                max-sm:opacity-100 max-sm:w-auto max-sm:overflow-visible
               "
             >
               WorkSpace
@@ -167,7 +167,7 @@ export function AppSidebar() {
                 group-data-[collapsible=icon]:scale-90
                 group-data-[collapsible=icon]:m-0
 
-                max-sm:!opacity-100 max-sm:!w-auto max-sm:!overflow-visible
+                max-sm:opacity-100 max-sm:w-auto max-sm:overflow-visible
               "
             >
               Subscription
@@ -249,7 +249,7 @@ export function AppSidebar() {
                 group-data-[collapsible=icon]:scale-90
                 group-data-[collapsible=icon]:m-0
 
-                max-sm:!opacity-100 max-sm:!w-auto max-sm:!overflow-visible
+                max-sm:opacity-100 max-sm:w-auto max-sm:overflow-visible
               "
             >
               User Profile
