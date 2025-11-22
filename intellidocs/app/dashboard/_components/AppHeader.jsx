@@ -1,16 +1,15 @@
 "use client";
 
-import React from 'react'
-import { ThemeToggleButton } from './ThemeToggleButton'
-import Image from 'next/image'
-import { UserButton } from '@clerk/nextjs'
-import { GithubIcon, Instagram } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { useSidebar } from "@/components/ui/sidebar";   // <-- ADD THIS
+import React from "react";
+import { ThemeToggleButton } from "./ThemeToggleButton";
+import Image from "next/image";
+import { UserButton } from "@clerk/nextjs";
+import { GithubIcon, Instagram } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useSidebar } from "@/components/ui/sidebar"; // <-- ADD THIS
 
 function AppHeader() {
-
-  const { toggleSidebar } = useSidebar();   // <-- ACCESS SIDEBAR CONTROLLER
+  const { toggleSidebar } = useSidebar(); // <-- ACCESS SIDEBAR CONTROLLER
 
   const openGithub = () => {
     window.open("https://github.com/jay1535", "_blank");
@@ -23,10 +22,8 @@ function AppHeader() {
   return (
     <div className="stickyflex p-3 top-0 z-50 w-full border rounded-sm bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 ">
       <div className="flex items-center justify-between">
-
         {/* LEFT SIDE */}
         <div className="flex items-center gap-4 group">
-
           {/* MOBILE MENU BUTTON */}
           <button
             onClick={toggleSidebar}
@@ -45,7 +42,11 @@ function AppHeader() {
               stroke="currentColor"
               strokeWidth={2}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
           </button>
 
@@ -66,47 +67,43 @@ function AppHeader() {
 
         {/* RIGHT SIDE */}
         <div className="flex gap-2 cursor-pointer max-sm:gap-1 max-sm:scale-90">
+          <Button
+            variant="outline"
+            className="rounded-2xl cursor-pointer max-sm:p-2"
+            onClick={openGithub}
+          >
+            <GithubIcon className="max-sm:w-4 max-sm:h-4" />
+          </Button>
 
-  <Button
-    variant="outline"
-    className="rounded-2xl cursor-pointer max-sm:p-2"
-    onClick={openGithub}
-  >
-    <GithubIcon className="max-sm:w-4 max-sm:h-4" />
-  </Button>
+          <Button
+            variant="outline"
+            className="rounded-2xl cursor-pointer max-sm:p-2"
+            onClick={openInstagram}
+          >
+            <Instagram className="max-sm:w-4 max-sm:h-4" />
+          </Button>
 
-  <Button
-    variant="outline"
-    className="rounded-2xl cursor-pointer max-sm:p-2"
-    onClick={openInstagram}
-  >
-    <Instagram className="max-sm:w-4 max-sm:h-4" />
-  </Button>
+          <ThemeToggleButton />
 
-  <ThemeToggleButton />
-
-  {/* ⭐ MATCH SIZE WITH OTHER BUTTONS */}
-  <div
-    className="
+          {/* ⭐ MATCH SIZE WITH OTHER BUTTONS */}
+          <div
+            className="
       rounded-full border p-1
       flex items-center justify-center
       cursor-pointer
       hover:bg-accent transition
       max-sm:p-1
     "
-  >
-    <UserButton
-      appearance={{
-        elements: {
-          userButtonAvatarBox: "w-5 h-5 max-sm:w-4 max-sm:h-4",
-        },
-      }}
-    />
-  </div>
-
-</div>
-
-
+          >
+            <UserButton
+              appearance={{
+                elements: {
+                  userButtonAvatarBox: "w-5 h-5 max-sm:w-4 max-sm:h-4",
+                },
+              }}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -25,7 +25,6 @@ export function AppSidebar() {
         <div className="p-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4 group">
-
               {/* LOGO — click to toggle sidebar */}
               <Image
                 src="/logo.svg"
@@ -59,7 +58,6 @@ export function AppSidebar() {
               >
                 Intelli<p className="text-orange-600">Docs</p>
               </h1>
-
             </div>
           </div>
         </div>
@@ -67,7 +65,6 @@ export function AppSidebar() {
 
       <SidebarContent>
         <SidebarGroup>
-
           {/* Upload PDF Button */}
           <div className="mt-5">
             <UploadPdfDialog>
@@ -98,7 +95,6 @@ export function AppSidebar() {
                 >
                   Upload PDF
                 </span>
-
               </Button>
             </UploadPdfDialog>
           </div>
@@ -142,7 +138,7 @@ export function AppSidebar() {
           </div>
 
           {/* Upgrade */}
-          <div  
+          <div
             className="
               flex  items-center justify-center gap-2 p-2 mt-5 cursor-pointer 
               hover:bg-slate-200 dark:hover:bg-slate-800
@@ -153,8 +149,8 @@ export function AppSidebar() {
               group-data-[collapsible=icon]:rounded-full
             "
           >
-            <ShieldCheck className="transition-all duration-300 text-slate-700 dark:text-slate-200"/>
-            
+            <ShieldCheck className="transition-all duration-300 text-slate-700 dark:text-slate-200" />
+
             <span
               className="
                 transition-all duration-300
@@ -172,14 +168,12 @@ export function AppSidebar() {
             >
               Subscription
             </span>
-
           </div>
         </SidebarGroup>
       </SidebarContent>
 
       {/* Footer only when logged in */}
       <SidebarFooter>
-
         {/* ProgressBar */}
         <div
           className="
@@ -254,7 +248,6 @@ export function AppSidebar() {
             >
               User Profile
             </span>
-
           </div>
         </SignedIn>
       </SidebarFooter>
