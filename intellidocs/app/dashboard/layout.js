@@ -1,21 +1,32 @@
+"use client";
+
 import React from "react";
+import dynamic from "next/dynamic";
 import AppHeader from "./_components/AppHeader";
-import { AppSidebar } from "./_components/AppSidebar";
 import HideOnScrollHeader from "./_components/OnScroll";
+
+// FIXED: Load the named export properly
+const AppSidebar = dynamic(
+  () =>
+    import("./_components/AppSidebar").then((mod) => mod.AppSidebar),
+  {
+    ssr: false,
+  }
+);
 
 export default function DashboardLayout({ children }) {
   return (
     <div className="relative w-full h-full">
 
-      {/* HEADER stays visible, hides when scrolling down */}
+      {/* HEADER */}
       <HideOnScrollHeader>
         <AppHeader />
       </HideOnScrollHeader>
 
-      {/* SIDEBAR stays under header */}
+      {/* CLIENT-ONLY SIDEBAR */}
       <AppSidebar />
 
-      {/* CONTENT with padding for header */}
+      {/* CONTENT */}
       <div className="pt-16">
         {children}
       </div>
