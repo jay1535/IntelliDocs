@@ -12,6 +12,7 @@ export const addFileEntryToDb = mutation({
         fileId : v.string(),
         storageId : v.string(),
         fileName : v.string(),
+        fileUrl : v.string(),
         createdBy : v.string()
     },
     handler : async (ctx, args) =>{
@@ -19,6 +20,7 @@ export const addFileEntryToDb = mutation({
             fileId : args.fileId,
             storageId : args.storageId,
             fileName : args.fileName,
+            fileUrl : args.fileUrl,
             createdBy : args.createdBy
         })
         return "File Inserted"
