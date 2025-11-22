@@ -69,7 +69,7 @@ export function AppSidebar() {
         <SidebarGroup>
 
           {/* Upload PDF Button */}
-          <div>
+          <div className="mt-5">
             <UploadPdfDialog>
               <Button
                 className="

@@ -31,7 +31,7 @@ function AppHeader() {
           <button
             onClick={toggleSidebar}
             className="
-              sm:hidden                                  /* Only mobile */
+              sm:hidden                                 
               p-2 rounded-md border 
               bg-background/80 backdrop-blur 
               shadow active:scale-95 transition
@@ -67,29 +67,45 @@ function AppHeader() {
         {/* RIGHT SIDE */}
         <div className="flex gap-2 cursor-pointer max-sm:gap-1 max-sm:scale-90">
 
-          <Button
-            variant="outline"
-            className="rounded-2xl cursor-pointer max-sm:p-2"
-            onClick={openGithub}
-          >
-            <GithubIcon className="max-sm:w-4 max-sm:h-4" />
-          </Button>
+  <Button
+    variant="outline"
+    className="rounded-2xl cursor-pointer max-sm:p-2"
+    onClick={openGithub}
+  >
+    <GithubIcon className="max-sm:w-4 max-sm:h-4" />
+  </Button>
 
-          <Button
-            variant="outline"
-            className="rounded-2xl cursor-pointer max-sm:p-2"
-            onClick={openInstagram}
-          >
-            <Instagram className="max-sm:w-4 max-sm:h-4" />
-          </Button>
+  <Button
+    variant="outline"
+    className="rounded-2xl cursor-pointer max-sm:p-2"
+    onClick={openInstagram}
+  >
+    <Instagram className="max-sm:w-4 max-sm:h-4" />
+  </Button>
 
-          <ThemeToggleButton />
+  <ThemeToggleButton />
 
-          <div className="max-sm:scale-90">
-            <UserButton />
-          </div>
+  {/* ⭐ MATCH SIZE WITH OTHER BUTTONS */}
+  <div
+    className="
+      rounded-full border p-1
+      flex items-center justify-center
+      cursor-pointer
+      hover:bg-accent transition
+      max-sm:p-1
+    "
+  >
+    <UserButton
+      appearance={{
+        elements: {
+          userButtonAvatarBox: "w-5 h-5 max-sm:w-4 max-sm:h-4",
+        },
+      }}
+    />
+  </div>
 
-        </div>
+</div>
+
 
       </div>
     </div>
